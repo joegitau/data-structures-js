@@ -12,7 +12,7 @@ class Stack {
 
     // increase the index of the items array (prevent over-writing the previous element)
     this.count += 1;
-    
+
     // restore the count to previous state
     return this.count - 1;
   }
@@ -37,13 +37,35 @@ class Stack {
 
   // Check if stack is empty
   isEmpty() {
-    console.log(this.count == 0 ? 'Stack is Empty' : 'Stack has ' + this.length() + ' element(s).');
+    console.log(
+      this.count == 0
+        ? 'Stack is Empty'
+        : 'Stack has ' + this.length() + ' element(s).'
+    );
     return this.count == 0;
   }
 
   // get the stack length
   length() {
     return this.count;
+  }
+
+  // print the stack elements
+  println() {
+    let el = '';
+    for (const i of this.items) {
+      console.log(i);
+      el += i + ' ';
+    }
+
+    return el;
+  }
+
+  // clear entire stack
+  clear() {
+    this.items = [];
+    this.count = 0;
+    console.log('Stack is cleared!')
   }
 }
 
@@ -58,9 +80,15 @@ stack.peek();
 
 stack.add(300);
 
+// print stack elements
+console.log(stack.println());
+
 // Removing top most element
 stack.pop(); // 300
 stack.pop(); // 200
 
+// clear stack
+stack.clear();
+
 // check if stack is empty
-stack.isEmpty()
+stack.isEmpty();
